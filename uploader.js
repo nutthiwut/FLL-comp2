@@ -1,6 +1,4 @@
-document.getElementById('uploadForm').addEventListener('submit', async function (event) {
-    event.preventDefault();
-
+function uploadImage() {
     const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];
 
@@ -8,16 +6,11 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
         const formData = new FormData();
         formData.append('file', file);
 
-        try {
-            const response = await fetch('https://your-backend-api/upload', {
-                method: 'POST',
-                body: formData,
-            });
+        // Here, you can perform an action with the FormData object, such as sending it to a server via AJAX.
+        // For simplicity, this example logs the file information to the console.
+        console.log('File Name:', file.name);
+        console.log('File Size:', file.size);
 
-            const result = await response.json();
-            console.log(result); // Handle the response from the backend
-        } catch (error) {
-            console.error('Error uploading image:', error);
-        }
+        // You can include AJAX code here to send the FormData to a server for storage.
     }
-});
+}
