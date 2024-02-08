@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Uploader</title>
+</head>
+<body>
+    <h1>Image Uploader</h1>
+    <form enctype="multipart/form-data" action="UploaderCloudAPI/upload" method="post" id="uploadForm">
+        <input type="file" name="file" id="fileInput" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <script src="uploader.js"></script>
+</body>
+</html>
