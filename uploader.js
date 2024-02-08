@@ -9,19 +9,11 @@ function uploadImage() {
     reader.onload = function (e) {
       const imageUrl = e.target.result;
 
-      try {
-        let storedImages = JSON.parse(localStorage.getItem('images')) || [];
+      // Simulate uploading to a server (replace this with actual server-side code)
+      // In a real scenario, you would send this image data to your server using AJAX or fetch API
+      // and save it on the server.
 
-        // Limit the number of stored images (for example, keep only the last 10)
-        const maxStoredImages = 10;
-        storedImages.push(imageUrl);
-        storedImages = storedImages.slice(-maxStoredImages);
-
-        localStorage.setItem('images', JSON.stringify(storedImages));
-      } catch (error) {
-        console.error('Failed to store image in local storage:', error);
-        alert('Failed to store image. Local storage quota exceeded.');
-      }
+      alert('Image uploaded successfully!');
     };
 
     reader.readAsDataURL(file);
