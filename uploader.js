@@ -6,11 +6,17 @@ function uploadImage() {
         const formData = new FormData();
         formData.append('file', file);
 
-        // Here, you can perform an action with the FormData object, such as sending it to a server via AJAX.
-        // For simplicity, this example logs the file information to the console.
-        console.log('File Name:', file.name);
-        console.log('File Size:', file.size);
-
-        // You can include AJAX code here to send the FormData to a server for storage.
+        fetch('https://your-backend-api/upload', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Upload Success:', data.message);
+            // You can take additional actions based on the server response
+        })
+        .catch(error => {
+            console.error('Upload Error:', error);
+        });
     }
 }
