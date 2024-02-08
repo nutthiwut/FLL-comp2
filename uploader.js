@@ -9,13 +9,13 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
         formData.append('file', file);
 
         try {
-            const response = await fetch('UploaderCloudAPI/upload', {
+            const response = await fetch('https://your-backend-api/upload', {
                 method: 'POST',
                 body: formData,
             });
 
             const result = await response.json();
-            console.log(result); // Handle the response from the cloud service
+            console.log(result); // Handle the response from the backend
         } catch (error) {
             console.error('Error uploading image:', error);
         }
