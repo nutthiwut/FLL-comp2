@@ -1,7 +1,8 @@
+// uploader.js
+
 document.addEventListener('DOMContentLoaded', function () {
   function uploadImage() {
     const input = document.getElementById('imageInput');
-
     const file = input.files[0];
 
     if (file) {
@@ -9,7 +10,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
       reader.onload = function (e) {
         const imageUrl = e.target.result;
-        alert('Image uploaded successfully!');
+
+        try {
+          let storedImages = JSON.parse(localStorage.getItem('images')) || [];
+          storedImages.push(imageUrl);
+
+          // Limit the number of stored images (for example, keep only the last 10)
+          const maxStoredImages = 10;
+          storedImages = storedImages.slice(-maxStoredImages);
+
+          localStorage.setItem('images', JSON.stringify(storedImages));
+          alert('Image uploaded successfully!');
+        } catch (error) {
+          console.error('Failed to store image in local storage:', error);
+          alert('Failed to store image. Local storage quota exceeded.');
+        }
       };
 
       reader.readAsDataURL(file);
