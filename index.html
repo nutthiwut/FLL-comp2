@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Uploader</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Uploader</title>
 </head>
 <body>
-    <h1>Image Uploader</h1>
-    <input type="file" id="fileInput" accept="image/*" onchange="displayImage()">
-    <br>
-    <img id="uploadedImage" style="max-width: 100%;" alt="Uploaded Image">
-    <script src="uploader.js"></script>
+  <input type="file" id="imageInput" accept="image/*">
+  <button onclick="uploadImage()">Upload Image</button>
+
+  <script src="uploader.js"></script>
 </body>
 </html>
