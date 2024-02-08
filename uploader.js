@@ -1,32 +1,31 @@
-document.addEventListener('DOMContentLoaded', function () {
-  function uploadImage() {
-    const input = document.getElementById('imageInput');
+function uploadImage() {
+  const input = document.getElementById('imageInput');
 
-    const file = input.files[0];
+  const file = input.files[0];
 
-    if (file) {
-      const reader = new FileReader();
+  if (file) {
+    const reader = new FileReader();
 
-      reader.onload = function (e) {
-        const imageUrl = e.target.result;
+    reader.onload = function (e) {
+      const imageUrl = e.target.result;
 
-        // Save the image URL to localStorage (replace with server-side logic)
-        const storedImages = JSON.parse(localStorage.getItem('images')) || [];
+      try {
+        let storedImages = JSON.parse(localStorage.getItem('images')) || [];
+
+        // Limit the number of stored images (for example, keep only the last 10)
+        const maxStoredImages = 10;
         storedImages.push(imageUrl);
+        storedImages = storedImages.slice(-maxStoredImages);
+
         localStorage.setItem('images', JSON.stringify(storedImages));
-      };
+      } catch (error) {
+        console.error('Failed to store image in local storage:', error);
+        alert('Failed to store image. Local storage quota exceeded.');
+      }
+    };
 
-      reader.readAsDataURL(file);
-    } else {
-      alert('Please select an image to upload.');
-    }
-  }
-
-  // Attach the uploadImage function to the button click event
-  const uploadButton = document.getElementById('uploadButton');
-  if (uploadButton) {
-    uploadButton.addEventListener('click', uploadImage);
+    reader.readAsDataURL(file);
   } else {
-    console.error('Button with ID "uploadButton" not found.');
+    alert('Please select an image to upload.');
   }
-});
+}
