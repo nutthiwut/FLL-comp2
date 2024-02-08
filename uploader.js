@@ -9,7 +9,6 @@ function uploadImage() {
     reader.onload = function (e) {
       const imageUrl = e.target.result;
 
-      // Check local storage quota before storing
       try {
         const storedImages = JSON.parse(localStorage.getItem('images')) || [];
         storedImages.push(imageUrl);
