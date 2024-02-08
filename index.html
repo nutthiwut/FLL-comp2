@@ -7,11 +7,12 @@
 </head>
 <body>
     <h1>Image Uploader</h1>
-    <form enctype="multipart/form-data" action="UploaderCloudAPI/upload" method="post" id="uploadForm">
-        <input type="file" name="file" id="fileInput" accept="image/*" required>
-        <button type="submit">Upload</button>
+    <form action="https://api.imgbb.com/1/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <input type="submit" value="Upload Image">
     </form>
 
-    <script src="uploader.js"></script>
+    <!-- Display uploaded images directly (example) -->
+    <img src="https://image-url-from-imgbb.com" alt="Uploaded Image">
 </body>
 </html>
