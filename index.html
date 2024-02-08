@@ -7,11 +7,9 @@
 </head>
 <body>
     <h1>Image Uploader</h1>
-    <form enctype="multipart/form-data" action="#" method="post" id="uploadForm">
-        <input type="file" name="file" id="fileInput" accept="image/*" required>
-        <button type="button" onclick="uploadImage()">Upload</button>
-    </form>
-
+    <input type="file" id="fileInput" accept="image/*" onchange="displayImage()">
+    <br>
+    <img id="uploadedImage" style="max-width: 100%;" alt="Uploaded Image">
     <script src="uploader.js"></script>
 </body>
 </html>
