@@ -9,16 +9,7 @@ function uploadImage() {
       const imageUrl = e.target.result;
 
       try {
-        const customHeaders = {
-          'Authorization': 'Bearer your-access-token', // Replace with your actual access token
-        };
-
-        let storedImages = JSON.parse(localStorage.getItem('images')) || [];
-        storedImages.push(imageUrl);
-
-        // Limit the number of stored images (for example, keep only the last 10)
-        const maxStoredImages = 10;
-        storedImages = storedImages.slice(-maxStoredImages);
+        // ...
 
         fetch('http://localhost:3000/api/upload', {
           method: 'POST',
@@ -32,6 +23,11 @@ function uploadImage() {
             if (!response.ok) {
               throw new Error(`Network response was not ok: ${response.status}`);
             }
+
+            // Access the response headers
+            const sampleHeader = response.headers.get('X-Sample-Header');
+            console.log('X-Sample-Header:', sampleHeader);
+
             return response.json();
           })
           .then(data => {
