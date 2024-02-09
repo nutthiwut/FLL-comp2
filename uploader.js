@@ -13,6 +13,7 @@ function uploadImage() {
           'Authorization': 'Bearer your-access-token',
         };
 
+        // Use the Fetch API to upload the image
         fetch('http://localhost:3000/api/upload', {
           method: 'POST',
           headers: {
@@ -26,10 +27,11 @@ function uploadImage() {
               throw new Error(`Network response was not ok: ${response.status}`);
             }
 
+            // Extract the image URL from the response
             return response.json();
           })
           .then(data => {
-            // Fetch images from the server instead of using sessionStorage
+            // Fetch images from the server
             fetch('http://localhost:3000/api/data')
               .then(response => response.json())
               .then(imageUrls => {
@@ -45,8 +47,8 @@ function uploadImage() {
             alert('Failed to upload image.');
           });
       } catch (error) {
-        console.error('Failed to store image in sessionStorage:', error);
-        alert('Failed to store image. Session storage quota exceeded.');
+        console.error('Failed to store image:', error);
+        alert('Failed to store image. Please try again.');
       }
     };
 
