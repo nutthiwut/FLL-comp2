@@ -13,8 +13,6 @@ function uploadImage() {
           'Authorization': 'Bearer your-access-token',
         };
 
-        // ...
-
         fetch('http://localhost:3000/api/upload', {
           method: 'POST',
           headers: {
@@ -28,21 +26,19 @@ function uploadImage() {
               throw new Error(`Network response was not ok: ${response.status}`);
             }
 
-            const sampleHeader = response.headers.get('X-Sample-Header');
-            console.log('X-Sample-Header:', sampleHeader);
-
             return response.json();
           })
           .then(data => {
-            // Use sessionStorage instead of localStorage
-            let storedImages = JSON.parse(sessionStorage.getItem('images')) || [];
-            storedImages.push(imageUrl);
-
-            const maxStoredImages = 10;
-            storedImages = storedImages.slice(-maxStoredImages);
-
-            sessionStorage.setItem('images', JSON.stringify(storedImages));
-            displayImages(storedImages);
+            // Fetch images from the server instead of using sessionStorage
+            fetch('http://localhost:3000/api/data')
+              .then(response => response.json())
+              .then(imageUrls => {
+                displayImages(imageUrls);
+              })
+              .catch(error => {
+                console.error('Error fetching images:', error);
+                alert('Failed to fetch images from the server.');
+              });
           })
           .catch(error => {
             console.error('Fetch error:', error);
@@ -58,4 +54,9 @@ function uploadImage() {
   } else {
     alert('Please select an image to upload.');
   }
+}
+
+function displayImages(images) {
+  // Display images in the UI as needed
+  // ...
 }
