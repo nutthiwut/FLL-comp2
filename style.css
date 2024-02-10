@@ -1,28 +1,47 @@
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f2f2f2;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
+#logo-container {
+  margin-top: 20px; /* Adjust the margin as needed */
 }
 
-main {
-    padding: 20px;
+#uploader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto; /* Push to the bottom of the screen */
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
+input[type="file"] {
+  margin-bottom: 10px;
 }
-input 
-{
-    width:200px;
-    height:200px;
+
+/* Optional styling for the button */
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
