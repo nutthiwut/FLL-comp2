@@ -42,10 +42,6 @@ function uploadImage() {
                 alert('Failed to fetch images from the server.');
               });
           })
-          .catch(error => {
-            console.error('Fetch error:', error);
-            alert('Failed to upload image.');
-          });
       } catch (error) {
         console.error('Failed to store image:', error);
         alert('Failed to store image. Please try again.');
