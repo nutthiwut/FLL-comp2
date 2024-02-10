@@ -39,18 +39,19 @@ function uploadImage() {
               })
               .catch(error => {
                 console.error('Error fetching images:', error);
-                alert('Failed to fetch images from the server.');
               });
           })
+          .catch(error => {
+            console.error('Failed to store image:', error);
+          });
       } catch (error) {
         console.error('Failed to store image:', error);
-        alert('Failed to store image. Please try again.');
       }
     };
 
     reader.readAsDataURL(file);
   } else {
-    alert('Please select an image to upload.');
+    console.error('Please select an image to upload.');
   }
 }
 
