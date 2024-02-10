@@ -21,3 +21,8 @@ footer {
     padding: 10px;
     text-align: center;
 }
+input 
+{
+    width:200px
+    height:200px
+}
