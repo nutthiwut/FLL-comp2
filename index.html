@@ -4,10 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Uploader</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f2f2f2;
+    }
+
+    #logo-container {
+      margin-top: 20px; /* Adjust the margin as needed */
+    }
+
+    #uploader-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: auto; /* Push to the bottom of the screen */
+    }
+
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-  <input type="file" id="imageInput" accept="image/*">
-  <button onclick="uploadImage()">Upload Image</button>
+  <div id="logo-container">
+    <!-- Your logo or image goes here -->
+    <img src="your-logo.png" alt="Logo">
+  </div>
+
+  <div id="uploader-container">
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="uploadImage()">Upload Image</button>
+  </div>
 
   <script src="uploader.js" defer></script>
 </body>
